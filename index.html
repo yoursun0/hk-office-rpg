@@ -6,6 +6,7 @@
 <title>香港人最鍾意返工｜永續加班大廈</title>
 <style>
 :root{color-scheme:dark;--ink:#0a1020;--paper:#e7e7d9;--fog:#8fa9b7;--gold:#e8bb75;--blood:#d57c89;--jade:#85d4c0}*{box-sizing:border-box}body{margin:0;background:#080d17;color:var(--paper);font-family:"Microsoft JhengHei","PingFang HK",sans-serif;overflow:hidden}button,select{font:inherit}button{cursor:pointer;color:var(--paper);border:1px solid #617580;background:#182936;padding:12px 24px;transition:.18s}button:hover{background:#31444c;border-color:var(--gold)}button:focus-visible,select:focus-visible{outline:3px solid var(--gold);outline-offset:4px}button.primary{background:#e8bb75;color:#15202b;border-color:#e8bb75;font-weight:bold}button:disabled{opacity:.35;cursor:default}#frame{position:relative;width:100vw;height:100dvh;display:grid;place-items:center;background:radial-gradient(ellipse,#152537,#080d17 75%)}canvas{display:block;width:min(100vw,177.7778dvh);height:min(56.25vw,100dvh);touch-action:none}#screen{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;background:#060c1480}#screen.hidden{display:none}.panel{pointer-events:auto;width:min(710px,92vw);max-height:90dvh;overflow:auto;background:linear-gradient(145deg,#152430ed,#0b1420f5);border:1px solid #60778180;padding:36px 40px;box-shadow:0 22px 90px #0008;position:relative}.panel:before{content:"";position:absolute;top:0;left:32px;right:32px;height:2px;background:linear-gradient(90deg,transparent,#e8bb75,transparent)}.eyebrow{color:var(--gold);letter-spacing:4px;font-size:12px;margin:0 0 14px}h1{font-family:"PMingLiU","Songti TC",serif;font-weight:400;font-size:clamp(30px,5vw,57px);line-height:1.15;letter-spacing:3px;margin:8px 0 14px}h2{font-family:"PMingLiU","Songti TC",serif;font-size:30px;font-weight:400;margin:4px 0 20px}.lede{line-height:1.9;color:#bacad1;font-size:15px}.quote{border-left:2px solid var(--gold);padding-left:18px;line-height:1.85;margin:24px 0;color:#e4d8bb}.row{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}.small{font-size:12px;color:#91a7b4;line-height:1.7}.keys{display:flex;gap:15px;flex-wrap:wrap;padding-top:20px;border-top:1px solid #41505c;margin-top:22px;font-size:12px;color:#a9bec8}kbd{color:var(--paper);border:1px solid #627581;border-bottom:3px solid #627581;padding:2px 6px;margin-right:4px;font-family:inherit}select{background:#142330;color:#dce2de;border:1px solid #566773;padding:10px}.choice{display:block;text-align:left;width:100%;margin:12px 0;padding:17px 20px}.choice strong{display:block;color:var(--gold);margin-bottom:8px}.choice span{display:block;font-size:13px;line-height:1.7;color:#b3c7cd}.badge{color:var(--jade);font-size:13px}.touch{position:absolute;inset:auto 12px 12px;display:none;justify-content:space-between;pointer-events:none}.touch-group{display:flex;gap:8px;align-items:flex-end}.touch button{pointer-events:auto;touch-action:none;width:54px;height:54px;padding:0;background:#112333b8;border-radius:50%;font-size:13px;user-select:none;-webkit-user-select:none}.touch button.big{width:66px;height:66px;border-color:#e8bb75}.touch.show{display:flex}#toptools{position:absolute;right:18px;top:12px;display:flex;gap:8px}#toptools button{font-size:12px;padding:8px 11px;background:#0a1726a0}#rotate{display:none}@media(max-height:600px){.panel{padding:22px 30px}.lede{font-size:13px;line-height:1.6}h1{font-size:32px}.quote{margin:14px 0}.keys{margin-top:14px;padding-top:12px}}@media (orientation:portrait) and (max-width:700px){#rotate{display:block;position:absolute;bottom:85px;font-size:12px;color:#a9bec8}.panel{padding:25px}.keys{gap:10px}#toptools{top:8px;right:8px}}@media(prefers-reduced-motion:reduce){button{transition:none}}
+#intro{position:absolute;inset:0;z-index:40;background:#080d17}#intro[hidden]{display:none!important}#intro video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#080d17}#intro .intro-scrim{position:absolute;inset:0;pointer-events:none;background:linear-gradient(to bottom,rgba(8,13,23,.78),transparent 28%),linear-gradient(to top,rgba(8,13,23,.82),transparent 42%)}#intro .intro-brand{position:absolute;z-index:2;top:max(16px,env(safe-area-inset-top));left:max(18px,env(safe-area-inset-left));margin:0;color:var(--gold);letter-spacing:4px;font-size:12px}#intro .skip{position:absolute;z-index:4;right:max(16px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));min-width:120px;border-radius:999px;background:var(--gold);color:#15202b;border-color:var(--gold);font-weight:bold}
 </style>
 </head>
 <body>
@@ -15,6 +16,7 @@
 <div id="screen"><section class="panel" id="panel" aria-live="polite"></section></div>
 <div class="touch" id="touch"><div class="touch-group"><button data-key="ArrowLeft" aria-label="向左移動">◀</button><button data-key="ArrowRight" aria-label="向右移動">▶</button></div><div class="touch-group"><button data-key="KeyC">咖啡</button><button data-key="KeyQ">收工</button><button data-key="ShiftLeft">閃避</button><button data-key="Space">跳</button><button data-key="KeyE">互動</button><button class="big" data-key="KeyJ">攻擊</button></div></div>
 <span id="rotate">橫向畫面可睇清整個辦公室</span>
+<div id="intro" hidden><video id="introVideo" muted playsinline preload="auto" aria-label="開場影片"></video><div class="intro-scrim" aria-hidden="true"></div><p class="intro-brand eyebrow">永 續 加 班 大 廈 · OFFICE AFTERLIFE</p><button type="button" class="skip" id="introSkip">跳過 Skip</button></div>
 </main>
 <script>
 'use strict';
@@ -378,7 +380,38 @@ for(const b of document.querySelectorAll('[data-key]')){b.addEventListener('poin
 // A tiny callable self-check covers chapter content, collision and save shape.
 function selfCheck(){const assert=(v,m)=>{if(!v)throw Error(m)};assert(chapters.length===5&&new Set(chapters.map(c=>c.kind)).size===5,'Five distinct bosses required');assert(chapters.every(c=>c.hp>0&&c.lines.length&&c.after.length),'Complete chapter content required');assert(getPlatforms().every(p=>p.x>=0&&p.x+p.w<WORLD&&p.y<FLOOR),'Platform bounds');assert(midiTracks.every(t=>t.notes.length>100&&t.duration>50),'Embedded MIDI arrangements');assert(!validSave({version:1,chapter:99}),'Reject invalid save');assert(formatTime(601)==='10:01','Timer format');return '5 chapters, 5 bosses, platform bounds, embedded MIDI, save validation and timer: OK'}
 window.officeGame={selfCheck,getState:()=>({mode,chapter,wave,bossSpawned,cleared,elapsed,stats:{...stats},player:player?{...player}:null,enemies:enemies.map(e=>({...e}))})};
-selfCheck();title();requestAnimationFrame(frame);
+const INTRO_SEEN_KEY='hk-office-rpg-intro-seen';
+const INTRO_WEBM='/intro/frontpage_open_30s_web.webm';
+const INTRO_MP4='/intro/frontpage_open_30s_web.mp4';
+function finishIntro(){
+ try{sessionStorage.setItem(INTRO_SEEN_KEY,'1')}catch{}
+ const wrap=document.getElementById('intro');
+ if(wrap)wrap.hidden=true;
+ const v=document.getElementById('introVideo');
+ if(v){try{v.pause()}catch{} v.removeAttribute('src');v.load()}
+ title();
+}
+function startIntro(){
+ const wrap=document.getElementById('intro'),v=document.getElementById('introVideo'),skip=document.getElementById('introSkip');
+ if(!wrap||!v||!skip){title();return}
+ wrap.hidden=false;
+ let done=false,fellBack=false;
+ const end=()=>{if(done)return;done=true;finishIntro()};
+ skip.addEventListener('click',end);
+ v.addEventListener('ended',end);
+ v.addEventListener('error',()=>{
+  if(!fellBack&&!(v.currentSrc||'').includes('.mp4')){fellBack=true;v.src=INTRO_MP4;const p=v.play();if(p)p.catch(()=>{v.controls=true});}
+  else end();
+ });
+ const tryPlay=()=>{v.muted=true;const p=v.play();if(p)p.catch(()=>{v.controls=true})};
+ v.addEventListener('canplay',tryPlay,{once:true});
+ v.src=v.canPlayType('video/webm')?INTRO_WEBM:INTRO_MP4;
+ v.load();
+}
+selfCheck();
+if(reduced||(()=>{try{return sessionStorage.getItem(INTRO_SEEN_KEY)==='1'}catch{return false}})())title();
+else startIntro();
+requestAnimationFrame(frame);
 </script>
 </body>
 </html>
